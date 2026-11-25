@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>마켓랩 | 모의투자</title>
+<style>
+:root{color-scheme:light;--bg:#f3f5f8;--panel:#fff;--text:#191f28;--sub:#596779;--line:#e7ebf1;--blue:#2263e5;--up:#d62c46;--down:#2263e5}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px/1.5 system-ui,sans-serif;font-variant-numeric:tabular-nums}h1,h2,p,figure{margin:0}h1{font-size:clamp(21px,4vw,29px)}h2{font-size:17px}small,.sub{color:var(--sub)}button,input{font:inherit}button{cursor:pointer;color:inherit}button:focus-visible,input:focus-visible{outline:3px solid #6a9aff;outline-offset:2px}button:disabled{opacity:.55;cursor:default}.top{background:var(--panel);border-bottom:1px solid var(--line)}.top>div{max-width:1280px;margin:auto;padding:15px clamp(12px,3vw,26px);display:flex;align-items:center;justify-content:space-between;gap:8px}.brand{font-size:19px;font-weight:850;letter-spacing:-.04em}.brand i{font-style:normal;color:var(--blue)}.badge{background:#eaf2ff;color:#2057bb;padding:5px 9px;border-radius:30px;font-size:12px;font-weight:700}.dot{display:inline-block;width:7px;height:7px;background:#2563eb;border-radius:100%;margin-right:5px}.wrap{max-width:1280px;margin:auto;padding:16px clamp(12px,3vw,26px) 28px}.watch{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:12px 0}.ticker,.card{background:var(--panel);border:1px solid var(--line);border-radius:17px}.ticker{padding:10px 12px;text-align:left;min-width:0}.ticker[aria-pressed=true]{border-color:#5692ff;background:#edf4ff}.ticker span{display:block}.ticker .name{font-weight:720;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.ticker .q{font-size:12px;color:var(--sub)}.layout{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr) minmax(0,1.05fr);gap:12px;align-items:start}.card{padding:16px;min-width:0}.head{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:10px}.price{display:block;font-size:clamp(27px,5vw,38px);letter-spacing:-.04em;font-weight:850}.up{color:var(--up)}.down{color:var(--down)}.neutral{color:var(--sub)}#chart{display:block;width:100%;height:225px;margin-top:10px}.chartCaption{font-size:12px;color:var(--sub);margin-top:4px}.legend{display:flex;flex-wrap:wrap;justify-content:space-between;gap:3px;margin-bottom:6px;font-size:12px;color:var(--sub)}.book{display:grid;gap:3px}.level{position:relative;isolation:isolate;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:5px;border:0;background:#f7f9fc;border-radius:7px;padding:6px 8px;text-align:right;font-size:13px;min-height:33px}.level:before{content:"";position:absolute;z-index:-1;inset:0 auto 0 0;width:var(--depth);background:var(--fill);border-radius:7px}.ask{--fill:#e2edff}.bid{--fill:#ffe7eb}.level b{text-align:left}.spread{text-align:center;color:var(--sub);font-size:12px;padding:4px}.seg{display:grid;grid-template-columns:1fr 1fr;gap:4px;border-radius:10px;background:#f0f3f8;padding:4px;margin-bottom:12px}.seg button{border:0;border-radius:7px;background:transparent;padding:6px}.seg button[aria-pressed=true]{background:white;font-weight:800;box-shadow:0 1px 3px #17233819}.field{display:block;font-size:13px;font-weight:700;margin:8px 0}.field input{display:block;width:100%;padding:8px 10px;margin-top:4px;border:1px solid #d6deea;border-radius:8px;background:white;color:inherit}.submit{border:0;border-radius:9px;color:white;background:#cf2542;width:100%;padding:10px;font-weight:780;margin-top:8px}.submit.sell{background:var(--blue)}.note,#message{font-size:12px;color:var(--sub)}#message{min-height:19px;margin-top:7px;overflow-wrap:anywhere}.portfolio{margin-top:12px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:10px 0}.stat{background:#f5f7fa;padding:9px 10px;border-radius:9px}.stat strong,.stat small{display:block;overflow-wrap:anywhere}.details{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.details h3{font-size:14px;margin:7px 0}.list{display:grid;gap:5px}.item{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:2px 6px;padding:7px 0;border-bottom:1px solid var(--line);font-size:13px}.item small{display:block}.ghost{font-size:12px;background:white;border:1px solid #d6deea;border-radius:7px;padding:5px 8px}.empty{font-size:13px;color:var(--sub)}[hidden]{display:none!important}
+@media(max-width:1000px){.layout{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{grid-column:1/-1}}
+@media(max-width:590px){.watch,.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.layout,.details{grid-template-columns:minmax(0,1fr)}.hero{grid-column:auto}.card{padding:13px}#chart{height:178px}.level{min-height:37px}.ghost{min-height:34px}.seg button,.field input,.submit{min-height:44px}}
+</style>
+</head>
+<body>
+<header class="top"><div><p class="brand"><i>◈</i> 마켓랩</p><span class="badge"><span class="dot" aria-hidden="true"></span>실시간 모의 시세</span></div></header>
+<main class="wrap">
+<p class="sub">실제 거래소와 연결되지 않은 모의투자입니다. 호가와 체결가는 약 1초마다 움직입니다.</p>
+<nav class="watch" id="watch" aria-label="종목 선택"></nav>
+<div class="layout">
+<section class="card hero" aria-labelledby="stock"><div class="head"><div><h1 id="stock"></h1><small id="code"></small></div><span class="badge">모의 시장</span></div>
+<strong class="price" id="price"></strong><p id="change"></p>
+<figure><canvas id="chart" role="img" aria-label="최근 모의 체결가 차트"></canvas><figcaption class="chartCaption">최근 모의 체결가 · 오른쪽이 최신</figcaption></figure></section>
+<section class="card" aria-labelledby="bookTitle"><div class="head"><h2 id="bookTitle">실시간 호가</h2><small>5단계</small></div><div class="legend"><span>가격(원)</span><span>잔량(주)</span></div><div class="book" id="book"></div></section>
+<section class="card" aria-labelledby="orderTitle"><div class="head"><h2 id="orderTitle">주문하기</h2><small id="orderName"></small></div>
+<div class="seg" aria-label="주문 방향"><button type="button" id="buy" aria-pressed="true">매수</button><button type="button" id="sell" aria-pressed="false">매도</button></div>
+<div class="seg" aria-label="주문 방식"><button type="button" id="limit" aria-pressed="true">지정가</button><button type="button" id="market" aria-pressed="false">시장가</button></div>
+<form id="form"><label class="field" id="priceField">지정 가격(원)<input id="orderPrice" type="number" inputmode="numeric" min="1" step="1" required></label><label class="field">수량(주)<input id="qty" type="number" inputmode="numeric" min="1" max="1000000" step="1" value="1" required></label><p class="note" id="orderInfo"></p><button class="submit" id="submit" type="submit">모의 매수</button></form>
+<p id="message" role="status"></p><p class="note">지정가 잔여분은 대기, 시장가 잔여분은 자동 취소됩니다. 수수료·세금은 적용하지 않습니다.</p></section>
+</div>
+<section class="card portfolio" aria-labelledby="wallet"><div class="head"><h2 id="wallet">내 모의 계좌</h2><button class="ghost" id="reset" type="button">계좌 초기화</button></div>
+<div class="stats" id="stats"></div><div class="details"><section><h3>보유 종목</h3><div class="list" id="holdings"></div></section><section><h3>미체결 주문</h3><div class="list" id="pending"></div></section><section><h3>최근 체결</h3><div class="list" id="history"></div></section></div><p class="note" id="storage" hidden>이 브라우저에서는 계좌를 저장할 수 없습니다. 페이지를 닫으면 기록이 사라집니다.</p></section>
+</main>
+<script>
+'use strict';
+const stocks=[{code:'005930',name:'삼성전자',base:72000,tick:100},{code:'000660',name:'SK하이닉스',base:183000,tick:100},{code:'035420',name:'NAVER',base:189000,tick:100},{code:'035720',name:'카카오',base:45600,tick:50}];
+const initial=10000000, key='marketlab-offline-v1', $=id=>document.getElementById(id), fmt=n=>Math.round(n).toLocaleString('ko-KR'), won=n=>fmt(n)+'원', int=(a,b)=>Math.floor(Math.random()*(b-a+1))+a;
+const clean=()=>({cash:initial,pos:{},pending:[],history:[],next:1});
+let account=clean(), selected=0, side='buy', mode='limit';
+try{const saved=JSON.parse(localStorage.getItem(key));if(saved&&Number.isSafeInteger(saved.cash)&&saved.cash>=0&&saved.pos&&Array.isArray(saved.pending)&&Array.isArray(saved.history)&&Number.isSafeInteger(saved.next))account=saved;}catch(e){$('storage').hidden=false;}
+function save(){try{localStorage.setItem(key,JSON.stringify(account));}catch(e){$('storage').hidden=false;}}
+function refreshBook(s){s.asks=Array.from({length:5},(_,i)=>({price:s.last+(i+1)*s.tick,qty:int(10,180)}));s.bids=Array.from({length:5},(_,i)=>({price:s.last-(i+1)*s.tick,qty:int(10,180)}));}
+for(const s of stocks){s.last=s.base;s.points=Array.from({length:40},()=>{s.last+=int(-2,2)*s.tick;return s.last;});refreshBook(s);}
+const stock=()=>stocks[selected];
+const pos=code=>account.pos[code]||{qty:0,cost:0};
+const held=(which,code)=>account.pending.reduce((sum,o)=>sum+(o.side===which&&(code===undefined||o.code===code)?o.qty*(which==='buy'?o.price:1):0),0);
+const availableCash=()=>account.cash-held('buy');
+const availableShares=code=>pos(code).qty-held('sell',code);
+function fill(o,s,price,qty){
+ const p=pos(s.code);
+ if(o.side==='buy'){account.cash-=price*qty;account.pos[s.code]={qty:p.qty+qty,cost:p.cost+price*qty};}
+ else{account.cash+=price*qty;const left=p.qty-qty;if(left)account.pos[s.code]={qty:left,cost:p.cost*left/p.qty};else delete account.pos[s.code];}
+ account.history.unshift({code:s.code,side:o.side,price,qty,at:Date.now()});account.history.length=Math.min(50,account.history.length);
+}
+function match(o,s,market=false){
+ const levels=o.side==='buy'?s.asks:s.bids;
+ for(const level of levels){
+  if(!o.qty)break;
+  if(!market&&(o.side==='buy'?level.price>o.price:level.price<o.price))break;
+  const cap=market?(o.side==='buy'?Math.floor(availableCash()/level.price):availableShares(s.code)):o.qty;
+  const q=Math.min(o.qty,level.qty,cap);
+  if(q>0){fill(o,s,level.price,q);o.qty-=q;level.qty-=q;}
+ }
+}
+function advance(){
+ for(const s of stocks){s.last=Math.max(Math.round(s.base*.55/s.tick)*s.tick,Math.min(Math.round(s.base*1.6/s.tick)*s.tick,s.last+int(-3,3)*s.tick));s.points.push(s.last);if(s.points.length>80)s.points.shift();refreshBook(s);}
+ const before=account.pending.reduce((n,o)=>n+o.qty,0);
+ for(const o of account.pending){const s=stocks.find(x=>x.code===o.code);if(s)match(o,s);}
+ account.pending=account.pending.filter(o=>o.qty>0);
+ if(before!==account.pending.reduce((n,o)=>n+o.qty,0))save();
+ render();
+}
+const sign=n=>n>0?'up':n<0?'down':'neutral';
+const signed=(n,suffix='원')=>(n>0?'+':'')+fmt(n)+suffix;
+$('watch').innerHTML=stocks.map((s,i)=>`<button type="button" class="ticker" data-i="${i}" aria-pressed="false"><span class="name">${s.name}</span><span class="q"></span></button>`).join('');
+$('book').innerHTML=Array.from({length:5},(_,i)=>`<button type="button" class="level ask" data-i="${4-i}" data-side="ask"><b></b><span></span></button>`).join('')+'<div id="spread" class="spread"></div>'+Array.from({length:5},(_,i)=>`<button type="button" class="level bid" data-i="${i}" data-side="bid"><b></b><span></span></button>`).join('');
+function draw(){
+ const el=$('chart'), w=el.clientWidth,h=el.clientHeight;if(!w||!h)return;
+ const d=Math.min(devicePixelRatio||1,3);if(el.width!==Math.round(w*d)||el.height!==Math.round(h*d)){el.width=Math.round(w*d);el.height=Math.round(h*d);}
+ const c=el.getContext('2d');if(!c)return;c.setTransform(d,0,0,d,0,0);c.clearRect(0,0,w,h);
+ const s=stock(), a=s.points, min=Math.min(...a)-s.tick*2,max=Math.max(...a)+s.tick*2;
+ const left=4,right=Math.max(5,w-67),top=12,bottom=h-14, x=i=>left+(right-left)*i/(a.length-1), y=v=>bottom-(bottom-top)*(v-min)/(max-min);
+ c.font='11px system-ui';c.textBaseline='middle';
+ for(let i=0;i<4;i++){const yy=top+(bottom-top)*i/3;c.strokeStyle='#e8edf4';c.beginPath();c.moveTo(left,yy);c.lineTo(right,yy);c.stroke();c.fillStyle='#596779';c.fillText(fmt(Math.round((max-(max-min)*i/3)/s.tick)*s.tick),right+6,yy);}
+ const up=s.last>=s.base, color=up?'#d62c46':'#2263e5';
+ const trace=()=>{c.moveTo(x(0),y(a[0]));a.forEach((v,i)=>{if(i)c.lineTo(x(i),y(v));});};
+ c.beginPath();trace();c.lineTo(right,bottom);c.lineTo(left,bottom);c.closePath();const g=c.createLinearGradient(0,top,0,bottom);g.addColorStop(0,up?'#ffd8e0':'#d7e7ff');g.addColorStop(1,'#ffffff00');c.fillStyle=g;c.fill();
+ c.beginPath();trace();c.strokeStyle=color;c.lineWidth=2;c.stroke();c.beginPath();c.arc(right,y(a.at(-1)),3.5,0,Math.PI*2);c.fillStyle=color;c.fill();
+ el.setAttribute('aria-label',`${s.name} 모의 시세 차트, 최근 가격 ${won(s.last)}`);
+}
+const set=(id,text)=>{$(id).textContent=text;};
+const empty=text=>`<p class="empty">${text}</p>`;
+function render(){
+ const s=stock(), diff=s.last-s.base, pct=(diff/s.base*100).toFixed(2);
+ set('stock',s.name);set('code',s.code+' · KRX 종목 예시');set('price',won(s.last));set('change',`기준가 대비 ${signed(diff)} (${diff>0?'+':''}${pct}%)`);$('change').className=sign(diff);set('orderName',s.name);
+ $('watch').querySelectorAll('button').forEach((b,i)=>{const t=stocks[i];b.setAttribute('aria-pressed',i===selected);b.querySelector('.q').textContent=won(t.last);});
+ const max=Math.max(1,...s.asks.map(l=>l.qty),...s.bids.map(l=>l.qty));
+ $('book').querySelectorAll('button').forEach(b=>{const ask=b.dataset.side==='ask',l=(ask?s.asks:s.bids)[Number(b.dataset.i)];b.querySelector('b').textContent=fmt(l.price);b.querySelector('span').textContent=fmt(l.qty);b.style.setProperty('--depth',(100*l.qty/max)+'%');b.setAttribute('aria-label',`${ask?'매도':'매수'} 호가 ${won(l.price)}, 잔량 ${fmt(l.qty)}주, 지정가에 입력`);});
+ const ask=s.asks.find(l=>l.qty),bid=s.bids.find(l=>l.qty);set('spread',ask&&bid?'호가 차이 '+won(ask.price-bid.price):'일부 호가 소진');
+ updateOrder();draw();
+ const value=stocks.reduce((sum,t)=>sum+t.last*pos(t.code).qty,0);
+ const asset=account.cash+value;
+ $('stats').innerHTML=[['총 평가자산',won(asset)],['주문 가능 현금',won(availableCash())],['주식 평가액',won(value)],['총 손익',signed(asset-initial)]].map(([k,v])=>`<div class="stat"><small>${k}</small><strong class="${k==='총 손익'?sign(asset-initial):''}">${v}</strong></div>`).join('');
+ const holdings=stocks.filter(t=>pos(t.code).qty);
+ $('holdings').innerHTML=holdings.map(t=>{const p=pos(t.code), pl=t.last*p.qty-p.cost;return `<div class="item"><span><b>${t.name}</b><small>${fmt(p.qty)}주 · 평균 ${won(p.cost/p.qty)}</small></span><b class="${sign(pl)}">${signed(pl)}</b></div>`;}).join('')||empty('보유한 종목이 없습니다.');
+ const pendingHTML=account.pending.map(o=>{const t=stocks.find(x=>x.code===o.code);return t?`<div class="item"><span><b>${t.name} ${o.side==='buy'?'매수':'매도'}</b><small>${won(o.price)} · 잔여 ${fmt(o.qty)}주</small></span><button class="ghost" type="button" data-id="${Number(o.id)}" aria-label="${t.name} 주문 취소">취소</button></div>`:'';}).join('')||empty('대기 중인 주문이 없습니다.');
+ if($('pending').dataset.last!==pendingHTML){$('pending').innerHTML=pendingHTML;$('pending').dataset.last=pendingHTML;}
+ $('history').innerHTML=account.history.slice(0,8).map(o=>{const t=stocks.find(x=>x.code===o.code);return t?`<div class="item"><span><b>${t.name} <span class="${o.side==='buy'?'up':'down'}">${o.side==='buy'?'매수':'매도'}</span></b><small>${new Date(o.at).toLocaleTimeString('ko-KR')}</small></span><span>${won(o.price)} × ${fmt(o.qty)}주</span></div>`:'';}).join('')||empty('아직 체결 내역이 없습니다.');
+}
+function updateOrder(){
+ const s=stock(), q=$('qty').valueAsNumber,p=$('orderPrice').valueAsNumber;
+ const capacity=side==='buy'?'매수 가능 '+won(availableCash()):'매도 가능 '+fmt(availableShares(s.code))+'주';
+ const detail=mode==='limit'&&q>0&&p>0&&Number.isSafeInteger(q*p)?' · 지정가 기준 '+won(q*p):mode==='market'?' · 호가 잔량 내에서만 체결':'';
+ set('orderInfo',capacity+detail);
+}
+function defaultPrice(){const s=stock(),levels=side==='buy'?s.asks:s.bids;$('orderPrice').value=(levels.find(l=>l.qty)||levels[0]).price;}
+function setControls(){
+ for(const x of ['buy','sell'])$(x).setAttribute('aria-pressed',side===x);
+ for(const x of ['limit','market'])$(x).setAttribute('aria-pressed',mode===x);
+ $('priceField').hidden=mode==='market';$('orderPrice').disabled=mode==='market';
+ $('submit').classList.toggle('sell',side==='sell');set('submit',side==='buy'?'모의 매수':'모의 매도');updateOrder();set('message','');
+}
+$('watch').onclick=e=>{const b=e.target.closest('button');if(!b)return;selected=Number(b.dataset.i);defaultPrice();setControls();render();};
+$('book').onclick=e=>{const b=e.target.closest('button');if(!b)return;const levels=b.dataset.side==='ask'?stock().asks:stock().bids;mode='limit';$('orderPrice').value=levels[Number(b.dataset.i)].price;setControls();};
+for(const x of ['buy','sell'])$(x).onclick=()=>{side=x;defaultPrice();setControls();};
+for(const x of ['limit','market'])$(x).onclick=()=>{mode=x;setControls();};
+$('form').oninput=updateOrder;
+$('form').onsubmit=e=>{
+ e.preventDefault();const s=stock(),qty=$('qty').valueAsNumber,price=$('orderPrice').valueAsNumber;
+ const msg=t=>set('message',t);
+ if(!Number.isSafeInteger(qty)||qty<1||qty>1000000)return msg('수량은 1~1,000,000주로 입력하세요.');
+ if(mode==='limit'&&(!Number.isSafeInteger(price)||price<1||price%s.tick!==0||!Number.isSafeInteger(price*qty)))return msg(`가격은 ${s.tick}원 단위의 유효한 금액으로 입력하세요.`);
+ if(mode==='limit'&&side==='buy'&&qty*price>availableCash())return msg('주문 가능 현금이 부족합니다.');
+ if(mode==='limit'&&side==='sell'&&qty>availableShares(s.code))return msg('매도 가능 수량이 부족합니다.');
+ if(mode==='market'&&(side==='buy'?availableCash()<=0:availableShares(s.code)<=0))return msg('주문 가능한 현금 또는 주식이 없습니다.');
+ const o={id:account.next++,code:s.code,side,price:mode==='limit'?price:0,qty};match(o,s,mode==='market');
+ if(mode==='limit'&&o.qty)account.pending.push(o);
+ msg(`${fmt(qty-o.qty)}주 체결${o.qty?' · '+fmt(o.qty)+'주 '+(mode==='limit'?'미체결 대기':'자동 취소'):''}`);save();render();
+};
+$('pending').onclick=e=>{const b=e.target.closest('button');if(!b)return;account.pending=account.pending.filter(o=>o.id!==Number(b.dataset.id));save();render();set('message','남은 주문 수량을 취소했습니다.');};
+$('reset').onclick=()=>{if(!confirm('보유 종목, 미체결 주문, 거래 기록을 지우고 1,000만 원으로 다시 시작할까요?'))return;account=clean();save();render();set('message','모의 계좌를 초기화했습니다.');};
+if(typeof ResizeObserver!=='undefined')new ResizeObserver(draw).observe($('chart'));else window.addEventListener('resize',draw);
+defaultPrice();setControls();render();setInterval(advance,1000);
+</script>
+</body>
+</html>
